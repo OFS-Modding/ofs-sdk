@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ofs-sdk.dev/schemas/signed-mod-catalog.schema.json",
+  "title": "OFS Signed Mod Catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "keyId", "algorithm", "payload", "signature"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "keyId": { "type": "string", "pattern": "^[A-Za-z0-9._-]{3,80}$" },
+    "algorithm": { "const": "ECDSA_P256_SHA256" },
+    "payload": { "type": "string", "contentEncoding": "base64" },
+    "signature": { "type": "string", "contentEncoding": "base64" }
+  }
+}

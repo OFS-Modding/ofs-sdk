@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AssemblyName>OFS.Sdk</AssemblyName>
+    <RootNamespace>OFS.Sdk</RootNamespace>
+    <Version>0.1.0</Version>
+    <PackageId>OFS.Sdk</PackageId>
+    <Authors>OFS-Modding contributors</Authors>
+    <Description>Public contracts and authoring API for Ore Factory Squad mods.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/OFS-Modding/ofs-framework</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/OFS-Modding/ofs-framework.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>ore-factory-squad;unity;il2cpp;modding;mod-sdk</PackageTags>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>

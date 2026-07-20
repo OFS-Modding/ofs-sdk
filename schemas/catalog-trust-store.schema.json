@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ofs-sdk.dev/schemas/catalog-trust-store.schema.json",
+  "title": "OFS Catalog Trust Store",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "keys"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "keys": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "algorithm", "subjectPublicKeyInfo", "sha256"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[A-Za-z0-9._-]{3,80}$" },
+          "algorithm": { "const": "ECDSA_P256_SHA256" },
+          "subjectPublicKeyInfo": { "type": "string", "contentEncoding": "base64" },
+          "sha256": { "type": "string", "pattern": "^[A-Fa-f0-9]{64}$" }
+        }
+      }
+    }
+  }
+}

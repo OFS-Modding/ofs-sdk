@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ofs-sdk.dev/schemas/runtime-diagnostics.schema.json",
+  "title": "OFS Runtime Diagnostic Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion", "sessionId", "processId", "startedAtUtc",
+    "startupCompletedAtUtc", "state", "environment",
+    "discoveredManifestCount", "mods"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "sessionId": { "type": "string", "pattern": "^[a-f0-9]{32}$" },
+    "processId": { "type": "integer", "minimum": 1 },
+    "startedAtUtc": { "type": "string", "format": "date-time" },
+    "startupCompletedAtUtc": {
+      "oneOf": [
+        { "type": "string", "format": "date-time" },
+        { "type": "null" }
+      ]
+    },
+    "state": { "enum": ["loading", "ready"] },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "frameworkVersion", "gameVersion", "gameBuildFingerprint",
+        "unityVersion", "il2CppMetadataVersion", "processArchitecture",
+        "pointerSize", "isVerifiedGameBuild"
+      ],
+      "properties": {
+        "frameworkVersion": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "gameVersion": { "type": "string", "minLength": 1 },
+        "gameBuildFingerprint": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "unityVersion": { "type": "string", "minLength": 1 },
+        "il2CppMetadataVersion": { "type": "integer", "minimum": 1 },
+        "processArchitecture": { "type": "string", "minLength": 1 },
+        "pointerSize": { "enum": [4, 8] },
+        "isVerifiedGameBuild": { "type": "boolean" }
+      }
+    },
+    "discoveredManifestCount": { "type": "integer", "minimum": 0 },
+    "mods": {
+      "type": "array",
+      "maxItems": 4096,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id", "name", "version", "manifestPath", "status", "phase",
+          "message", "relatedModIds"
+        ],
+        "properties": {
+          "id": { "type": ["string", "null"] },
+          "name": { "type": ["string", "null"] },
+          "version": { "type": ["string", "null"] },
+          "manifestPath": { "type": "string", "minLength": 1 },
+          "status": {
+            "enum": ["loaded", "disabled", "quarantined", "rejected", "blocked", "failed"]
+          },
+          "phase": { "type": "string", "minLength": 1, "maxLength": 100 },
+          "message": { "type": "string", "maxLength": 4000 },
+          "relatedModIds": {
+            "type": "array",
+            "maxItems": 256,
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 1, "maxLength": 80 }
+          }
+        }
+      }
+    }
+  }
+}

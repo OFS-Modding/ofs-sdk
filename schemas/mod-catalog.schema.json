@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ofs-sdk.dev/schemas/mod-catalog.schema.json",
+  "title": "OFS Mod Catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "generatedAtUtc", "gameBuild", "frameworkVersion", "mods"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "generatedAtUtc": { "type": "string", "format": "date-time" },
+    "gameBuild": { "type": "string", "minLength": 1 },
+    "frameworkVersion": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "mods": {
+      "type": "array",
+      "maxItems": 100000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "version", "sdkVersion", "gameBuilds", "package"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[A-Za-z0-9._-]{3,80}$" },
+          "name": { "type": "string", "minLength": 1, "maxLength": 100 },
+          "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+          "summary": { "type": "string", "maxLength": 1000 },
+          "author": { "type": "string", "maxLength": 100 },
+          "sdkVersion": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+          "gameBuilds": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+          "dependencies": { "type": "array" },
+          "capabilities": { "type": "array", "items": { "type": "string" } },
+          "multiplayer": { "enum": ["unknown", "client", "server", "required", "incompatible"] },
+          "thumbnail": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["url", "bytes", "sha256"],
+            "properties": {
+              "url": { "type": "string", "format": "uri", "pattern": "^https://" },
+              "bytes": { "type": "integer", "minimum": 1, "maximum": 2097152 },
+              "sha256": { "type": "string", "pattern": "^[A-Fa-f0-9]{64}$" }
+            }
+          },
+          "package": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["url", "bytes", "sha256"],
+            "properties": {
+              "url": { "type": "string", "format": "uri", "pattern": "^https://" },
+              "bytes": { "type": "integer", "minimum": 1, "maximum": 2147483648 },
+              "sha256": { "type": "string", "pattern": "^[A-Fa-f0-9]{64}$" }
+            }
+          }
+        }
+      }
+    }
+  }
+}
