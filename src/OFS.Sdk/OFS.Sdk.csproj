@@ -7,7 +7,7 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <AssemblyName>OFS.Sdk</AssemblyName>
     <RootNamespace>OFS.Sdk</RootNamespace>
-    <Version>0.2.4</Version>
+    <Version>0.3.0</Version>
     <PackageId>OFS.Sdk</PackageId>
     <Authors>OFS-Modding contributors</Authors>
     <Description>Public contracts and authoring API for Ore Factory Squad mods.</Description>

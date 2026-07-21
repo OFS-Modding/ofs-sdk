@@ -9,6 +9,29 @@ public interface IGameplayUiApi
     bool IsAvailable { get; }
     IGameplayHud CreateHud(GameplayHudDefinition definition);
     IGameplayPanel CreatePanel(GameplayPanelDefinition definition);
+    IComputerAppRegistration RegisterComputerApp(ComputerAppDefinition definition) =>
+        throw new NotSupportedException("This OFS runtime cannot register computer applications.");
+}
+
+public sealed record ComputerAppDefinition(
+    string Id,
+    string Label,
+    Action OnPressed,
+    bool Visible = true);
+
+/// <summary>
+/// Scene-bound entry in the factory computer launcher. The runtime materializes
+/// it when the vanilla computer UI is loaded and routes selection to managed code.
+/// </summary>
+public interface IComputerAppRegistration : IDisposable
+{
+    string Id { get; }
+    string OwnerId { get; }
+    string Label { get; set; }
+    bool Visible { get; set; }
+    bool IsMaterialized { get; }
+    bool IsAlive { get; }
+    void Remove();
 }
 
 public enum GameplayUiAnchor
