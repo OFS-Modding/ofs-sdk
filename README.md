@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png" width="128" alt="OFS-Modding">
+</p>
+
 # OFS SDK
 
 The public C# authoring SDK for Ore Factory Squad mods.
