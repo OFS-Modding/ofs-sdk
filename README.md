@@ -28,7 +28,9 @@ minor releases; breaking changes must update the API baseline and changelog.
 
 Start with [mod authoring](docs/authoring.md). The runtime-facing player,
 teleport, mining-node, and mining-area APIs are covered in
-[players and mining](docs/players-and-mining.md).
+[players and mining](docs/players-and-mining.md). Factory-computer extensions
+and persistent employee assignment are covered in
+[computer apps and hired employees](docs/computer-apps-and-employees.md).
 
 ## Repository boundaries
 

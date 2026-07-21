@@ -906,6 +906,14 @@ public interface INpcApi
     }
     IReadOnlyList<IVanillaEmployeeController> FindVanillaEmployees(
         bool activeOnly = true) => [];
+    IReadOnlyList<VanillaHiredEmployeeSnapshot> FindHiredVanillaEmployees(
+        bool idleOnly = false) => [];
+    void AssignHiredVanillaEmployeeServer(string employeeId, string assignmentId) =>
+        throw new NotSupportedException(
+            "This OFS runtime cannot assign hired employees.");
+    void ReleaseHiredVanillaEmployeeServer(string employeeId) =>
+        throw new NotSupportedException(
+            "This OFS runtime cannot release hired employees.");
     VanillaHiredEmployeeSnapshot HireVanillaEmployeeServer(
         VanillaEmployeeHireDefinition definition) =>
         throw new NotSupportedException(
