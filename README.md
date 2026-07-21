@@ -26,11 +26,16 @@ dotnet pack src/OFS.Sdk/OFS.Sdk.csproj -c Release -o artifacts/packages
 The package ID is `OFS.Sdk`. During early development the API may change between
 minor releases; breaking changes must update the API baseline and changelog.
 
+Start with [mod authoring](docs/authoring.md). The runtime-facing player,
+teleport, mining-node, and mining-area APIs are covered in
+[players and mining](docs/players-and-mining.md).
+
 ## Repository boundaries
 
 - Loader, runtime, installer, and Mod Hub: `OFS-Modding/ofs-loader`
 - Exact Unity AssetBundle project: `OFS-Modding/ofs-asset-authoring`
-- Reference mods: `OFS-Modding/ofs-example-mod` and `OFS-Modding/ofs-crash-and-drift`.
+- Reference mods are published as separate repositories; they are never bundled
+  with the loader or installer.
 
 This is an unofficial community project and is not affiliated with the game's
 developers or publisher. No game files are distributed here.

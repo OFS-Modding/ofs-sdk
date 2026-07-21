@@ -30,6 +30,8 @@ public interface IModContext
         throw new NotSupportedException("Runtime physics are unavailable in this runtime.");
     IEntityApi Entities { get; }
     INpcApi Npcs { get; }
+    IPlayerApi Players =>
+        throw new NotSupportedException("Player discovery is unavailable in this runtime.");
     IInteractionApi Interactions { get; }
     IDialogueApi Dialogues { get; }
     IGameplayUiApi GameplayUi =>
@@ -1786,6 +1788,7 @@ public interface IGameContent
     IPropertyRegistry Properties { get; }
     IItemSpawnProfileRegistry ItemSpawnProfiles { get; }
     IMiningAreaSpawnerRegistry MiningAreaSpawners { get; }
+    IMiningNodeRegistry MiningNodes { get; }
 }
 
 /// <summary>Lookup and owner-aware registration for T_ItemSO assets.</summary>

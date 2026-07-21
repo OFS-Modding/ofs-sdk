@@ -60,7 +60,9 @@ public sealed record MiningAreaSpawnerDefinition(
     int MinCapacityPerRule,
     bool CapacityByArea,
     bool EqualDistributionAcrossRules,
-    IReadOnlyList<MiningSpawnRuleDefinition> Rules);
+    IReadOnlyList<MiningSpawnRuleDefinition> Rules,
+    bool IsRestoringFromSave = false,
+    bool InitialCountsCalculated = false);
 
 /// <summary>Creates or attaches the vanilla networked mining-area spawner.</summary>
 public interface IMiningAreaSpawnerRegistry
@@ -80,6 +82,8 @@ public interface IMiningAreaSpawner : IDisposable
     UnityObject Component { get; }
     IReadOnlyList<MiningSpawnRuleDefinition> Rules { get; }
     bool IsAlive { get; }
+    bool IsRestoringFromSave { get; }
+    bool InitialCountsCalculated { get; }
     MiningAreaSpawnerDefinition Describe();
     UnityObject ResolveActiveProfile();
     int ComputeCapacity(MiningSpawnRuleDefinition rule);

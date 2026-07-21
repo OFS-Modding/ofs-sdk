@@ -7,14 +7,14 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <AssemblyName>OFS.Sdk</AssemblyName>
     <RootNamespace>OFS.Sdk</RootNamespace>
-    <Version>0.1.0</Version>
+    <Version>0.2.4</Version>
     <PackageId>OFS.Sdk</PackageId>
     <Authors>OFS-Modding contributors</Authors>
     <Description>Public contracts and authoring API for Ore Factory Squad mods.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageProjectUrl>https://github.com/OFS-Modding/ofs-framework</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/OFS-Modding/ofs-framework.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/OFS-Modding/ofs-sdk</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/OFS-Modding/ofs-sdk.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>ore-factory-squad;unity;il2cpp;modding;mod-sdk</PackageTags>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>

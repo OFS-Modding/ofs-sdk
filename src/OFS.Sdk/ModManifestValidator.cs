@@ -4,7 +4,7 @@ namespace OFS.Sdk;
 public static class ModManifestValidator
 {
     public const int CurrentSchemaVersion = 1;
-    public static Version CurrentSdkVersion { get; } = new(0, 1, 0);
+    public static Version CurrentSdkVersion { get; } = new(0, 2, 4);
 
     public static IReadOnlyList<string> Validate(ModManifest? manifest)
     {

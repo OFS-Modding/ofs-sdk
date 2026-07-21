@@ -82,6 +82,8 @@ public interface IUnityApi
         string assemblyName,
         string namespaze,
         string className);
+    UnityObject GetGameObject(UnityObject component) =>
+        throw new NotSupportedException("Component-to-GameObject resolution is unavailable.");
 
     string GetName(UnityObject instance);
     void SetName(UnityObject instance, string name);
